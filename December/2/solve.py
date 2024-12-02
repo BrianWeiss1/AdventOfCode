@@ -23,13 +23,15 @@ for j in range(len(lst1)):
     increasing = False
     continueBreak = False
     for i in range(len(lst1[j])-1):
-        if decreasing and float(lst1[j][i]) < float(lst1[j][i+1]):
+        notDecrease = float(lst1[j][i]) < float(lst1[j][i+1])
+        notIncrease = float(lst1[j][i]) > float(lst1[j][i+1])
+        if decreasing and notDecrease:
             valid = False
-        elif increasing and float(lst1[j][i]) > float(lst1[j][i+1]):
+        elif increasing and notIncrease:
             valid = False
-        if float(lst1[j][i]) > float(lst1[j][i+1]):
+        if notIncrease:
             decreasing = True
-        elif float(lst1[j][i]) < float(lst1[j][i+1]):
+        elif notDecrease:
             increasing = True
         if not (abs(float(lst1[j][i])-float(lst1[j][i+1])) >= 1 and abs(float(lst1[j][i])-float(lst1[j][i+1])) <= 3):
             valid = False
